@@ -30,6 +30,7 @@ master = Tkinter.Tk()
 canvas = Tkinter.Canvas(master, width=GAME['WIDTH'], height=GAME['HEIGHT'])
 canvas.pack()
 
+# this is just an example -- not real code
 x = 0
 
 def repeat_me():
@@ -39,7 +40,7 @@ def repeat_me():
     x = x + 10
     master.after(1000, repeat_me)
 
-
 repeat_me()
+# example ends here -- everything else is real but incomplete :(
 
 master.mainloop()
