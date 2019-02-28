@@ -13,16 +13,21 @@ GAME = {
     'AUTHORS'       : ['VIKTOR A. ROZENKO VOITENKO', 'BENJAMIN A. MEDHURST',
                        'TUNG DO VIET', 'HENRIQUE CRUZ FONSECA'],
     'VERSION'       : 'ALPHA',
-    'FRAME RATE'    : 25,
-    'DELAY'         : 1000 // 25,
+    'FRAME RATE'    : 50,
+    'DELAY'         : 1000 // 50,
     'WIDTH'         : 1000,
     'HEIGHT'        : 600,
+    'BIRD X'        : 100,
+    'BIRD Y'        : 50,
+    'BIRD SIZE'     : 30,
+    'BIRD VELOCITY' : 0,
+    'BIRD G'        : 1,
 }
 
 
 
 # MAIN
-flappy = Bird()
+flappy = Bird(GAME['BIRD X'], GAME['BIRD Y'], GAME['BIRD SIZE'], GAME['BIRD VELOCITY'], GAME['BIRD G'])
 obstacles = list()
 
 master = Tkinter.Tk()
@@ -31,16 +36,14 @@ canvas = Tkinter.Canvas(master, width=GAME['WIDTH'], height=GAME['HEIGHT'])
 canvas.pack()
 
 # this is just an example -- not real code
-x = 0
-
-def repeat_me():
-    global x
+def render():
     canvas.delete(Tkinter.ALL)
-    canvas.create_rectangle(x,50,x+50,50+50, fill = "yellow")
-    x = x + 10
-    master.after(1000, repeat_me)
+    
+    flappy.render(canvas)
+    
+    master.after(GAME['DELAY'], render)
 
-repeat_me()
+render()
 # example ends here -- everything else is real but incomplete :(
 
 master.mainloop()
