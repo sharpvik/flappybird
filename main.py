@@ -57,7 +57,7 @@ def render():
     
     flappy.render(canvas) # render flappy
     
-    master.after(GAME['DELAY'], render) # render again after GAME['DELAY']
+    master.after(GAME['DELAY'], render) # render all again after GAME['DELAY']
 
 render()
 

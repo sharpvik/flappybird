@@ -4,14 +4,14 @@ class Bird:
         self.y = y
         #self.size = size
         self.halfsize = size / 2
-        self.velocity = velocity
+        self.velocity = float(velocity)
         self.g = g
         self.framerate = float(framerate)
         self.height = height
         
     def flap(self, e):
         if e.char == ' ':
-            self.velocity = -(self.height / self.g)
+            self.velocity = float( -(self.height / self.g) )
         
     def logic(self):
         self.velocity += self.g / self.framerate
