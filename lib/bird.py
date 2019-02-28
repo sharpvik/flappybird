@@ -1,14 +1,19 @@
 class Bird:
-    def __init__(self, x, y, size, velocity, g):
+    def __init__(self, x, y, size, velocity, g, framerate, height):
         self.x = x
         self.y = y
-        self.size = size
-        self.halfsize = self.size // 2
+        #self.size = size
+        self.halfsize = size // 2
         self.velocity = velocity
-        self.g = g 
+        self.g = g
+        self.framerate = float(framerate)
+        self.height = height
+        
+    def flap(self):
+        self.velocity = -(self.height / self.g)
         
     def logic(self):
-        self.velocity += self.g
+        self.velocity += self.g / self.framerate
         self.y += self.velocity
         
     def render(self, canvas):
