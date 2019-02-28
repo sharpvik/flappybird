@@ -3,14 +3,15 @@ class Bird:
         self.x = x
         self.y = y
         #self.size = size
-        self.halfsize = size // 2
+        self.halfsize = size / 2
         self.velocity = velocity
         self.g = g
         self.framerate = float(framerate)
         self.height = height
         
-    def flap(self):
-        self.velocity = -(self.height / self.g)
+    def flap(self, e):
+        if e.char == ' ':
+            self.velocity = -(self.height / self.g)
         
     def logic(self):
         self.velocity += self.g / self.framerate
@@ -20,4 +21,4 @@ class Bird:
         self.logic()
         canvas.create_rectangle(self.x - self.halfsize, self.y - self.halfsize,
                                 self.x + self.halfsize, self.y + self.halfsize,
-                                fill='yellow')
+                                fill='#FFEB3B', outline='')
