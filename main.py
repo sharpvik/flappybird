@@ -2,6 +2,7 @@
 import Tkinter
 
 # OWN MODULES IMPORTS
+from lib.background import Background
 from lib.bird import Bird
 from lib.obstacle import Obstacle
 
@@ -12,54 +13,75 @@ GAME = {
     'AUTHORS'       : ['VIKTOR A. ROZENKO VOITENKO', 'BENJAMIN A. MEDHURST',
                        'TUNG DO VIET', 'HENRIQUE CRUZ FONSECA'],
     'VERSION'       : 'ALPHA',
+    'ON'            : False,
+    'OVER'          : False,
     'FRAME RATE'    : 50, # frames/second
     'DELAY'         : 1000 / 50, # milliseconds
-    'WIDTH'         : 1000, # pixels
+    'WIDTH'         : 990, # pixels
     'HEIGHT'        : 600, # pixels
     'BIRD X'        : 200, # pixels
-    'BIRD Y'        : 100, # pixels
+    'BIRD Y'        : 240, # pixels
     'BIRD SIZE'     : 30, # pixels
     'BIRD VELOCITY' : 0, # pixels/second
-    'BIRD G'        : 40, # pixels/second^2
+    'BIRD SPEED'    : 350, # pixels/second
+    'BIRD G'        : 70, # pixels/second^2
 }
+
+
+
+# MAIN FUNCTIONS
+def keypress_redirect(e):
+    if e.char == ' ':           # START / FLAP
+        if not GAME['ON']:
+            GAME['ON'] = True
+            gameloop()
+        flappy.flap()
+    elif e.char == 'p':         # PAUSE
+        GAME['ON'] = False
+    elif e.char == 'r':         # RESUME
+        if not GAME['ON']:
+            GAME['ON'] = True
+            gameloop()
+    elif e.char == 'q':         # QUIT
+        quit()
 
 
 
 # MAIN
     # OBJECTS
+background = Background(GAME['WIDTH'], GAME['HEIGHT'], GAME['BIRD SPEED'],
+                        GAME['FRAME RATE'])
 flappy = Bird(GAME['BIRD X'], GAME['BIRD Y'], GAME['BIRD SIZE'], 
               GAME['BIRD VELOCITY'], GAME['BIRD G'], 
               GAME['FRAME RATE'], GAME['HEIGHT'])
-obstacles = list()
+
 
     # GUI
 master = Tkinter.Tk()
 
 
+# button press detection
 frame = Tkinter.Frame(master, width=0, height=0)
-frame.bind('<KeyPress>', flappy.flap)
+frame.bind('<KeyPress>', keypress_redirect)
 frame.pack()
 frame.focus_set()
+
 
 canvas = Tkinter.Canvas(master, width=GAME['WIDTH'], height=GAME['HEIGHT'])
 canvas.pack()
 
 
-def render():
+def gameloop():
     canvas.delete(Tkinter.ALL) # clear canvas
     
-    # render sky and ground
-    canvas.create_rectangle(0, 0, GAME['WIDTH'], GAME['HEIGHT'] / 10 * 8,
-                            fill='#42A5F5', outline='') 
-    canvas.create_rectangle(0, GAME['HEIGHT'] / 10 * 8, 
-                            GAME['WIDTH'], GAME['HEIGHT'], fill='#00BFA5',
-                            outline='')
+    # render stuff
+    background.render(canvas)
+    flappy.render(canvas)
     
-    flappy.render(canvas) # render flappy
-    
-    master.after(GAME['DELAY'], render) # render all again after GAME['DELAY']
+    if GAME['ON']: # if GAME is not PAUSED
+        master.after(GAME['DELAY'], gameloop) # continue gameloop
 
-render()
+gameloop()
 
 
 master.mainloop()
