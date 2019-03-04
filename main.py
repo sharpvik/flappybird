@@ -48,16 +48,16 @@ def keypress_redirect(e):
 
 
 # MAIN
+    # GUI
+master = Tkinter.Tk()
+
+
     # OBJECTS
 background = Background(GAME['WIDTH'], GAME['HEIGHT'], GAME['BIRD SPEED'],
                         GAME['FRAME RATE'])
 flappy = Bird(GAME['BIRD X'], GAME['BIRD Y'], GAME['BIRD SIZE'], 
               GAME['BIRD VELOCITY'], GAME['BIRD G'], 
               GAME['FRAME RATE'], GAME['HEIGHT'])
-
-
-    # GUI
-master = Tkinter.Tk()
 
 
 # button press detection

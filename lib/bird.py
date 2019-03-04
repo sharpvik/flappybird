@@ -1,3 +1,6 @@
+import Tkinter
+
+
 class Bird:
     def __init__(self, x, y, size, velocity, g, framerate, height):
         self.x = x
@@ -8,6 +11,7 @@ class Bird:
         self.g = g
         self.framerate = float(framerate)
         self.height = height
+        self.sprite = Tkinter.PhotoImage(file='img/flappy.gif')
         
     def flap(self):
         self.velocity = float( -(self.height / self.g) ) * 2
@@ -18,6 +22,7 @@ class Bird:
         
     def render(self, canvas):
         self.logic()
-        canvas.create_oval(self.x - self.halfsize, self.y - self.halfsize,
-                           self.x + self.halfsize + 7, self.y + self.halfsize,
-                           fill='#830f72', outline='#523746', width=3)
+        canvas.create_image(self.x, self.y, image=self.sprite)
+        #canvas.create_oval(self.x - self.halfsize, self.y - self.halfsize,
+        #                   self.x + self.halfsize + 7, self.y + self.halfsize,
+        #                   fill='#830f72', outline='#523746', width=3)
