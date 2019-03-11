@@ -13,9 +13,11 @@ class Bird:
         self.height = height
         self.spritedown = Tkinter.PhotoImage(file='img/flappydown.gif')
         self.spriteup = Tkinter.PhotoImage(file='img/flappyup.gif')
+        self.flapcount = 0
         
     def flap(self):
         self.velocity = float( -(self.height / self.g) ) * 2
+        self.flapcount = 5
         
     def logic(self):
         self.velocity += self.g / self.framerate
@@ -23,7 +25,8 @@ class Bird:
         
     def render(self, canvas):
         self.logic()
-        if self.velocity < 0:
+        if self.flapcount > 0:
             canvas.create_image(self.x, self.y, image=self.spriteup)
+            self.flapcount -= 1
         else:
             canvas.create_image(self.x, self.y, image=self.spritedown)
