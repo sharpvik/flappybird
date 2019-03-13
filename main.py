@@ -58,7 +58,12 @@ background = Background(GAME['WIDTH'], GAME['HEIGHT'], GAME['BIRD SPEED'],
 flappy = Bird(GAME['BIRD X'], GAME['BIRD Y'], GAME['BIRD SIZE'], 
               GAME['BIRD VELOCITY'], GAME['BIRD G'], 
               GAME['FRAME RATE'], GAME['HEIGHT'])
-obstacle = Obstacle()
+obstacles = [
+    Obstacle(400, 350, GAME['HEIGHT'], GAME['FRAME RATE'], GAME['BIRD SPEED']),
+    Obstacle(700, 350, GAME['HEIGHT'], GAME['FRAME RATE'], GAME['BIRD SPEED']),
+    Obstacle(1000, 350, GAME['HEIGHT'], GAME['FRAME RATE'], GAME['BIRD SPEED']),
+    Obstacle(1300, 350, GAME['HEIGHT'], GAME['FRAME RATE'], GAME['BIRD SPEED'])
+]
 
 
 # button press detection
@@ -78,7 +83,8 @@ def gameloop():
     # render stuff
     background.render(canvas)
     flappy.render(canvas)
-    obstacle.render(canvas)
+    for obstacle in obstacles:
+        obstacle.render(canvas)
     
     if GAME['ON']: # if GAME is not PAUSED
         master.after(GAME['DELAY'], gameloop) # continue gameloop
