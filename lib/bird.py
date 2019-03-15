@@ -5,7 +5,6 @@ class Bird:
     def __init__(self, x, y, size, velocity, g, framerate, height):
         self.x = x
         self.y = y
-        #self.size = size
         self.halfsize = size / 2
         self.velocity = float(velocity)
         self.g = g
@@ -16,7 +15,7 @@ class Bird:
         self.flapcount = 0
         
     def flap(self):
-        self.velocity = float( -(self.height / self.g) ) * 2
+        self.velocity = -(self.height / self.g) * 2
         self.flapcount = 5
         
     def logic(self):
