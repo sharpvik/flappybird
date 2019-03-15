@@ -55,8 +55,8 @@ master = Tkinter.Tk()
     # OBJECTS
 background = Background(GAME['WIDTH'], GAME['HEIGHT'], GAME['BIRD SPEED'],
                         GAME['FRAME RATE'])
-flappy = Bird(GAME['BIRD X'], GAME['BIRD Y'], GAME['BIRD SIZE'], 
-              GAME['BIRD VELOCITY'], GAME['BIRD G'], 
+flappy = Bird(GAME['BIRD X'], GAME['BIRD Y'], GAME['BIRD SIZE'],
+              GAME['BIRD VELOCITY'], GAME['BIRD G'],
               GAME['FRAME RATE'], GAME['HEIGHT'])
 
 
@@ -73,11 +73,11 @@ canvas.pack()
 
 def gameloop():
     canvas.delete(Tkinter.ALL) # clear canvas
-    
+
     # render stuff
     background.render(canvas)
     flappy.render(canvas)
-    
+
     if GAME['ON']: # if GAME is not PAUSED
         master.after(GAME['DELAY'], gameloop) # continue gameloop
 
