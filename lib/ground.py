@@ -14,8 +14,8 @@ class Ground:
         
     def render(self, canvas):
         # ground
-        canvas.create_rectangle(0, self.ground, self.width, 
-                                self.height, fill='#dfd798', outline='')
+        canvas.create_rectangle(-50, self.ground, self.width + 50, 
+                                self.height + 50, fill='#dfd798', outline='')
         # ground border
         canvas.create_rectangle(0, self.ground, self.width,
                                 self.ground + 3, 
