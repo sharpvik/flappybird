@@ -17,16 +17,16 @@ class Ground:
         canvas.create_rectangle(-50, self.ground, self.width + 50, 
                                 self.height + 50, fill='#dfd798', outline='')
         # ground border
-        canvas.create_rectangle(0, self.ground, self.width,
+        canvas.create_rectangle(0, self.ground, self.width + 50,
                                 self.ground + 3, 
                                 fill='#543847', outline='')
-        canvas.create_rectangle(0, self.ground + 3, self.width,
+        canvas.create_rectangle(0, self.ground + 3, self.width + 50,
                                 self.ground + 21, 
                                 fill='#9ee460', outline='')
-        canvas.create_rectangle(0, self.ground + 21, self.width,
+        canvas.create_rectangle(0, self.ground + 21, self.width + 50,
                                 self.ground + 24, 
                                 fill='#567e28', outline='')
-        canvas.create_rectangle(0, self.ground + 24, self.width,
+        canvas.create_rectangle(0, self.ground + 24, self.width + 50,
                                 self.ground + 27, 
                                 fill='#d6a755', outline='')
         # squares
