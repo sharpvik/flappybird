@@ -7,7 +7,6 @@ from random import randint
 from lib.background import Background
 from lib.ground import Ground
 from lib.bird import Bird
-from lib.obstacle import Obstacle
 
 
 class FlappyBird:
@@ -45,10 +44,6 @@ class FlappyBird:
         self.flappy = Bird(self.bird['x'], self.bird['y'], 
                            self.bird['velocity'], self.g, self.framerate,
                            self.screen_height)
-        self.obstacles = [
-            Obstacle(self.screen_width + 100, randint(132, 350), 
-                     self.screen_height, self.framerate, self.bird['speed']),
-        ]
         
         
         # KEYPRESS DETECTION
@@ -84,30 +79,12 @@ class FlappyBird:
             quit()
         
         
-    def logic(self):
-        # destoy invisible obstacle
-        if self.obstacles[0].x < -50:
-            self.obstacles.pop(0)
-        # create new obstacle when needed
-        if self.obstacles[-1].x <= self.screen_width and \
-           not self.obstacles[-1].replaced:
-            updated_x = self.obstacles[-1].x + self.obstacle_spacing
-            random_y = randint(132, 350)
-            self.obstacles.append(
-                Obstacle(updated_x, random_y, self.screen_height,
-                         self.framerate, self.bird['speed'])
-            )        
-
-    
     def gameloop(self):
-        self.logic()
         self.canvas.delete(tk.ALL) # clear canvas
         
         # render stuff
         self.background.render(self.canvas)
         self.flappy.render(self.canvas)
-        for obstacle in self.obstacles:
-            obstacle.render(self.canvas)
         self.ground.render(self.canvas)
         
         if self.on: # if GAME is not PAUSED
