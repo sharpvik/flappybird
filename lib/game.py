@@ -25,10 +25,11 @@ class FlappyBird:
             'x'         : 200, # pixels
             'y'         : 240, # pixels
             'velocity'  : 0, # pixels/seconds
-            'speed'     : 400, # pixels/second
+            'speed'     : 200, # pixels/second
         }
         self.g = 60 # pixels/second^2
         self.obstacle_spacing = 300 # pixels
+        self.collided = False
         
         
         # GUI
@@ -47,7 +48,8 @@ class FlappyBird:
                            self.screen_height)
         self.obstacles = [
             Obstacle(self.screen_width + 100, randint(132, 350), 
-                     self.screen_height, self.framerate, self.bird['speed']),
+                     self.screen_height, self.framerate, 
+                     self.bird['speed'], self.bird['x']),
         ]
         
         
@@ -88,6 +90,7 @@ class FlappyBird:
         # destoy invisible obstacle
         if self.obstacles[0].x < -50:
             self.obstacles.pop(0)
+            
         # create new obstacle when needed
         if self.obstacles[-1].x <= self.screen_width and \
            not self.obstacles[-1].replaced:
@@ -95,7 +98,7 @@ class FlappyBird:
             random_y = randint(132, 350)
             self.obstacles.append(
                 Obstacle(updated_x, random_y, self.screen_height,
-                         self.framerate, self.bird['speed'])
+                         self.framerate, self.bird['speed'], self.bird['x'])
             )        
 
     
@@ -103,12 +106,19 @@ class FlappyBird:
         self.logic()
         self.canvas.delete(tk.ALL) # clear canvas
         
-        # render stuff
+        # render stuff and detect collisions
         self.background.render(self.canvas)
         self.flappy.render(self.canvas)
         for obstacle in self.obstacles:
             obstacle.render(self.canvas)
+            # detect collision with obstacles
+            self.collided += obstacle.check_collision(self.flappy.bbox)
         self.ground.render(self.canvas)
+        # detect collision with the ground
+        self.collided += self.ground.check_collision(self.flappy.bbox)
         
-        if self.on: # if GAME is not PAUSED
+        # GAME OVER on self.collided
+        self.over = self.collided
+        
+        if self.on and not self.over: # if GAME is not PAUSED or OVER
             self.master.after(self.delay, self.gameloop) # continue gameloop
