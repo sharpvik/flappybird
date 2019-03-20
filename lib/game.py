@@ -10,7 +10,7 @@ from lib.bird import Bird
 
 
 class FlappyBird:
-    def __init__(self, g, speed):
+    def __init__(self, g=None, speed=None):
         # DECLARE MAIN VARIBALES
         self.author = 'VIKTOR A. ROZENKO VOITENKO'
         self.version = 'ALPHA'
@@ -24,9 +24,9 @@ class FlappyBird:
             'x'         : 200, # pixels
             'y'         : 240, # pixels
             'velocity'  : 0, # pixels/seconds
-            'speed'     : speed, # pixels/second
+            'speed'     : speed if speed is not None else 400, # pixels/second
         }
-        self.g = g # pixels/second^2
+        self.g = g if g is not None else 60 # pixels/second^2
         self.obstacle_spacing = 300 # pixels
 
 

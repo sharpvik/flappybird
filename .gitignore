@@ -2,3 +2,4 @@
 /lib/*pyc
 /img/*psd
 /img/*png
+/tests/*pyc

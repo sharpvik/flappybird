@@ -4,13 +4,16 @@ import Tkinter as tk
 
 class Alter:
     def __init__(self):
-        self.g = int()
-        self.s = int()
+        self.g = None
+        self.s = None
 
 
         self.master = tk.Tk()
-        self.master.tk.call('wm', 'iconphoto', self.master._w,
+        try:
+            self.master.tk.call('wm', 'iconphoto', self.master._w,
                             tk.PhotoImage(file='img/icon.gif'))
+        except:
+            pass
         self.master.title('Altering Physics')
 
         # tumblers
