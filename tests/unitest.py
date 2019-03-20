@@ -54,7 +54,8 @@ def test_multiple(tests):
 
 
 
-# 
+# Using the list of tests, 
+# log test numbers and for each True if it passes, False if it doesn't
 def test_logs(tests):
     print 'Test Logs:'
     for i, test in enumerate(tests):
