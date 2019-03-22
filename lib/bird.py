@@ -2,10 +2,9 @@ import Tkinter
 
 
 class Bird:
-    def __init__(self, x, y, size, velocity, g, framerate, height):
+    def __init__(self, x, y, velocity, g, framerate, height):
         self.x = x
         self.y = y
-        self.halfsize = size / 2
         self.velocity = float(velocity)
         self.g = g
         self.framerate = float(framerate)

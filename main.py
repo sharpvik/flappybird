@@ -1,14 +1,10 @@
-# STANDARD LIBRARY IMPORTS
-import Tkinter
-from random import randint
-
-# OWN MODULES IMPORTS
-from lib.background import Background
-from lib.ground import Ground
-from lib.bird import Bird
-from lib.obstacle import Obstacle
+from lib.alter import Alter
+from lib.game import FlappyBird
 
 
+alt = Alter()
+
+<<<<<<< HEAD
 
 # MAIN VARIABLES
 GAME = {
@@ -113,3 +109,6 @@ gameloop()
 
 
 master.mainloop()
+=======
+game = FlappyBird(alt.g, alt.s)
+>>>>>>> 5c46ab408f33c62b531768b516d2984defa07489
