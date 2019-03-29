@@ -7,11 +7,13 @@ class Ground:
         self.x = 0
         self.framerate = float(framerate)
         
+
     def logic(self):
         self.x -= self.speed / self.framerate
         if self.x <= -360:
             self.x = 0
         
+
     def render(self, canvas):
         # ground
         canvas.create_rectangle(-50, self.ground, self.width + 50, 
