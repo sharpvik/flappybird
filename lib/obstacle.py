@@ -7,5 +7,9 @@ class Obstacle:
         pass
 
 
+    def check_collision(self):
+        pass
+
+
     def render(self):
         pass
