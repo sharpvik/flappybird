@@ -11,7 +11,7 @@ from lib.obstacle import Obstacle
 
 
 class FlappyBird:
-    def __init__(self):
+    def __init__(self, g, s):
         # DECLARE MAIN VARIBALES
         self.author = 'VIKTOR A. ROZENKO VOITENKO'
         self.version = 'ALPHA'
@@ -25,9 +25,9 @@ class FlappyBird:
             'x'         : 200, # pixels
             'y'         : 240, # pixels
             'velocity'  : 0, # pixels/seconds
-            'speed'     : 400, # pixels/second
+            'speed'     : s, # pixels/second
         }
-        self.g = 60 # pixels/second^2
+        self.g = g # pixels/second^2
         self.obstacle_spacing = 300 # pixels
         self.collided = False
         

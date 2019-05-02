@@ -33,3 +33,4 @@ class Bird:
         else:
             sprite = canvas.create_image(self.x, self.y, image=self.spritedown)
         self.bbox = canvas.bbox(sprite)
+

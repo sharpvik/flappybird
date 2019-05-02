@@ -42,3 +42,4 @@ class Ground:
             canvas.create_rectangle(x, self.ground + 3, x + 90, self.ground + 21,
                                     fill='#76bd3b', outline='')
             x += 180
+

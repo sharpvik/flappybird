@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 /*pyc
 /lib/*pyc
 /img/*psd
 /img/*png
+=======
+/*pyc
+/lib/*pyc
+/img/*psd
+/img/*png
+/tests/*pyc
+>>>>>>> bff1b887e1fa70f8a9f2eee515f96f9f6ece4d36
