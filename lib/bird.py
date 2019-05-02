@@ -12,6 +12,7 @@ class Bird:
         self.spritedown = Tkinter.PhotoImage(file='img/flappydown.gif')
         self.spriteup = Tkinter.PhotoImage(file='img/flappyup.gif')
         self.flapcount = 0
+	self.bbox = None
         
 
     def flap(self):
@@ -27,7 +28,8 @@ class Bird:
     def render(self, canvas):
         self.logic()
         if self.flapcount > 0:
-            canvas.create_image(self.x, self.y, image=self.spriteup)
+            sprite = canvas.create_image(self.x, self.y, image=self.spriteup)
             self.flapcount -= 1
         else:
-            canvas.create_image(self.x, self.y, image=self.spritedown)
+            sprite = canvas.create_image(self.x, self.y, image=self.spritedown)
+        self.bbox = canvas.bbox(sprite) 

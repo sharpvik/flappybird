@@ -12,6 +12,10 @@ class Ground:
         self.x -= self.speed / self.framerate
         if self.x <= -360:
             self.x = 0
+
+
+    def check_collision(self, bbox):
+        return self.ground < bbox[3]
         
 
     def render(self, canvas):
