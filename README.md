@@ -22,3 +22,7 @@ P.S. If game is paused, SPACE resumes the game with an instant flap.
 ## Modification
 
 I welcome all mod proposals. If you have any, PULL REQUEST will help you to get it merged in (if I like it).
+
+## Finally
+
+With love from Viktor A. Rozenko Voitenko
