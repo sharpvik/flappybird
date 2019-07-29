@@ -18,7 +18,7 @@ class Obstacle:
 
 
     def check_collision(self, bbox):
-        return self.x - 32 < bbox[2] and self.x + 32 > bbox[0] and \
+        return self.x - 25 < bbox[2] and self.x + 25 > bbox[0] and \
                (self.y - 86 > bbox[1] or self.y + 86 < bbox[3])
 
 
