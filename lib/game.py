@@ -1,5 +1,5 @@
 # STANDARD LIBRARY IMPORTS
-import Tkinter as tk
+import tkinter as tk
 from random import randint
 
 
@@ -11,7 +11,7 @@ from lib.obstacle import Obstacle
 
 
 class FlappyBird:
-    def __init__(self, g, s):
+    def __init__(self):
         # DECLARE MAIN VARIBALES
         self.author = 'VIKTOR A. ROZENKO VOITENKO'
         self.version = 'ALPHA'
@@ -25,9 +25,9 @@ class FlappyBird:
             'x'         : 200, # pixels
             'y'         : 240, # pixels
             'velocity'  : 0, # pixels/seconds
-            'speed'     : s, # pixels/second
+            'speed'     : 400, # pixels/second
         }
-        self.g = g # pixels/second^2
+        self.g = 60 # pixels/second^2
         self.obstacle_spacing = 300 # pixels
         self.collided = False
         
@@ -121,4 +121,4 @@ class FlappyBird:
         self.over = self.collided
         
         if self.on and not self.over: # if GAME is not PAUSED or OVER
-            self.master.after(self.delay, self.gameloop) # continue gameloop
+            self.master.after( int(self.delay), self.gameloop ) # continue gameloop

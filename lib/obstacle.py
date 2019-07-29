@@ -1,4 +1,4 @@
-import Tkinter
+import tkinter as tk
 
 class Obstacle:
     def __init__(self, x, y, height, framerate, speed, bird_x):
@@ -6,7 +6,7 @@ class Obstacle:
         self.y = y
         self.height = height
         self.ground = height / 10 * 8
-        self.sprite = Tkinter.PhotoImage(file='img/obstacle.gif')
+        self.sprite = tk.PhotoImage(file='img/obstacle.gif')
         self.framerate = framerate
         self.speed = speed
         self.replaced = False

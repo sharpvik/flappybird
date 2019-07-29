@@ -1,4 +1,4 @@
-import Tkinter
+import tkinter as tk
 
 
 class Bird:
@@ -9,8 +9,8 @@ class Bird:
         self.g = g
         self.framerate = float(framerate)
         self.height = height
-        self.spritedown = Tkinter.PhotoImage(file='img/flappydown.gif')
-        self.spriteup = Tkinter.PhotoImage(file='img/flappyup.gif')
+        self.spritedown = tk.PhotoImage(file='img/flappydown.gif')
+        self.spriteup = tk.PhotoImage(file='img/flappyup.gif')
         self.flapcount = 0
         self.bbox = None
         
@@ -33,4 +33,3 @@ class Bird:
         else:
             sprite = canvas.create_image(self.x, self.y, image=self.spritedown)
         self.bbox = canvas.bbox(sprite)
-
