@@ -25,9 +25,9 @@ class FlappyBird:
             'x'         : 200, # pixels
             'y'         : 240, # pixels
             'velocity'  : 0, # pixels/seconds
-            'speed'     : 400, # pixels/second
+            'speed'     : 200, # pixels/second
         }
-        self.g = 60 # pixels/second^2
+        self.g = 55 # pixels/second^2
         self.obstacle_spacing = 300 # pixels
         self.collided = False
         
